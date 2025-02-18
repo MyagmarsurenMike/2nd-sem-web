@@ -1,12 +1,12 @@
 import { useRequest } from "ahooks";
 import { Avatar, Popover } from "antd";
-import Logo from "assets/img/menu_logo.png";
 import UserBadge from "components/badge/userbadge";
+import { IClock } from "components/clock";
 import { AuthContext, useAuthContext } from "context/auth";
 import { useThemeContext } from "context/theme";
 import { Action, ThemeType } from "context/type";
 import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import auth from "service/auth";
 import file from "service/file";
 import {
@@ -21,7 +21,6 @@ import {
 import { ChangePassword } from "./action/change_password";
 import { Logout } from "./action/logout";
 import { Menu } from "./menu";
-import { IClock } from "components/clock";
 
 const Navbar: React.FC = () => {
   const [nav, setNav] = useState<boolean>(false);
@@ -56,7 +55,7 @@ const Navbar: React.FC = () => {
       <div className="px-6 h-full flex justify-between items-center">
         <div className="flex items-center gap-6 ">
           <div className="lg:flex items-center gap-2 hidden">
-            <img src={Logo} alt="logo" />
+            {/* <img src={Logo} alt="logo" /> */}
           </div>
           <div className="lg:block hidden">
             <Menu />
