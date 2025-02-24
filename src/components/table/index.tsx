@@ -97,8 +97,8 @@ export const ITable = <T extends {}>({
         pagination={
           !hidePagination && {
             className: "px-6 font-semibold text-gray-500 flex items-center",
-            pageSize: form?.pageSize,
-            pageSizeOptions: [20, 50, 100, 200, 500, 1000, 1500],
+            pageSize: limit?? 10,
+            pageSizeOptions: [10, 20, 50, 100, 200, 500, 1000, 1500],
             showSizeChanger: true,
             onChange: (page, size) => {
               const current = page - 1;
@@ -156,10 +156,10 @@ export const ITable = <T extends {}>({
           ...(columns as any),
           {
             hideInTable: hideAction,
-            title: "",
+            title: "Үйлдэл",
             fixed: "right",
             dataIndex: "action",
-            align: "right",
+            align: "center",
             width: "auto",
             render: (_, record) => {
               return (

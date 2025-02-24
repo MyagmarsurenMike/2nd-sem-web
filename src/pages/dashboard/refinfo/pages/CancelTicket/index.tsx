@@ -1,7 +1,7 @@
 import { useDebounceFn, useRequest } from "ahooks";
 import { notification, Switch } from "antd";
 import { PageCard } from "components/card";
-import { ITable } from "components/index";
+import { DetailButton, ITable } from "components/index";
 import { Label } from "components/label";
 import InitTableHeader from "components/table-header";
 import { useEffect, useState } from "react";
@@ -10,6 +10,7 @@ import { CustomerCompanyType } from "service/fininaciar/customerCompany/type";
 import { initPagination } from "utils/index";
 import { CreateService } from "./actions/create";
 import { UpdateService } from "./actions/update";
+import { ViewService } from "./actions/view";
 import { ProFormDateWeekRangePicker } from "@ant-design/pro-form/es/components";
 
 const CanTickSet = () => {
@@ -112,6 +113,7 @@ const CanTickSet = () => {
         dataSource={data}
         refresh={(values) => list.run({ ...filter, ...values })}
         UpdateComponent={UpdateService}
+        DetailComponent={ViewService}
         form={filter}
         setForm={setFilter}
         columns={[

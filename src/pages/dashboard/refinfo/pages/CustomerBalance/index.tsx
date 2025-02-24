@@ -38,6 +38,118 @@ const CustBalSet = () => {
 
   const searchRun = useDebounceFn(list.run, { wait: 1000 });
 
+  const data = [
+    {
+      id: "1",
+      type: "001",
+      fee_code: "A123",
+      fee_name: "Tax",
+      fee_type: "Percentage",
+      fee_number: "5",
+      ledger: { name: "USD" },
+    },
+    {
+      id: "2",
+      type: "002",
+      fee_code: "B456",
+      fee_name: "Service Charge",
+      fee_type: "Fixed",
+      fee_number: "1000",
+      ledger: { name: "MNT" },
+    },
+    {
+      id: "3",
+      type: "003",
+      fee_code: "C789",
+      fee_name: "Delivery Fee",
+      fee_type: "Fixed",
+      fee_number: "2000",
+      ledger: { name: "USD" },
+    },
+    {
+      id: "4",
+      type: "004",
+      fee_code: "D012",
+      fee_name: "Handling Fee",
+      fee_type: "Fixed",
+      fee_number: "500",
+      ledger: { name: "USD" },
+    },
+    {
+      id: "5",
+      type: "005",
+      fee_code: "E345",
+      fee_name: "Subscription Fee",
+      fee_type: "Monthly",
+      fee_number: "2000",
+      ledger: { name: "MNT" },
+    },
+    {
+      id: "6",
+      type: "006",
+      fee_code: "F678",
+      fee_name: "Service Charge",
+      fee_type: "Fixed",
+      fee_number: "1000",
+      ledger: { name: "USD" },
+    },
+    {
+      id: "7",
+      type: "007",
+      fee_code: "G901",
+      fee_name: "Delivery Fee",
+      fee_type: "Fixed",
+      fee_number: "2000",
+      ledger: { name: "USD" },
+    },
+    {
+      id: "8",
+      type: "008",
+      fee_code: "H234",
+      fee_name: "Handling Fee",
+      fee_type: "Fixed",
+      fee_number: "500",
+      ledger: { name: "USD" },
+    },
+    {
+      id: "9",
+      type: "009",
+      fee_code: "I567",
+      fee_name: "Subscription Fee",
+      fee_type: "Monthly",
+      fee_number: "2000",
+      ledger: { name: "MNT" },
+    },
+    {
+      id: "10",
+      type: "010",
+      fee_code: "J890",
+      fee_name: "Service Charge",
+      fee_type: "Fixed",
+      fee_number: "1000",
+      ledger: { name: "USD" },
+    },
+    {
+      id: "11",
+      type: "011",
+      fee_code: "K123",
+      fee_name: "Delivery Fee",
+      fee_type: "Fixed",
+      fee_number: "2000",
+      ledger: { name: "USD" },
+    },
+    {
+      id: "12",
+      type: "012",
+      fee_code: "L456",
+      fee_name: "Handling Fee",
+      fee_type: "Fixed",
+      fee_number: "500",
+      ledger: { name: "USD" },
+    },
+  ];
+
+
   return (
     <PageCard xR>
       <div className="px-2 pb-0">
@@ -60,7 +172,7 @@ const CustBalSet = () => {
       <ITable<CustomerCompanyType>
         total={list.data?.total}
         loading={list.loading}
-        dataSource={list?.data?.items ?? []}
+        dataSource={data}
         refresh={(values) => list.run({ ...filter, ...values })}
         UpdateComponent={UpdateService}
         form={filter}

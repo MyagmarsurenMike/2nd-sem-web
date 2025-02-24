@@ -1,7 +1,7 @@
 import { useDebounceFn, useRequest } from "ahooks";
 import { notification, Switch } from "antd";
 import { PageCard } from "components/card";
-import { ITable } from "components/index";
+import { DeleteButton, ITable } from "components/index";
 import { Label } from "components/label";
 import InitTableHeader from "components/table-header";
 import { useEffect, useState } from "react";
@@ -11,6 +11,9 @@ import { initPagination } from "utils/index";
 import { CreateService } from "./actions/create";
 import { UpdateService } from "./actions/update";
 import { ProFormDateWeekRangePicker } from "@ant-design/pro-form/es/components";
+import { refinfo_additionalfeeset_data } from "globaldatas";
+import { ViewService } from "./actions/view";
+import { RemoveButton} from "components/button/actions/remove";
 
 const AddFeeSet = () => {
   const [filter, setFilter] = useState(initPagination);
@@ -36,54 +39,6 @@ const AddFeeSet = () => {
     run();
   }, [filter]);
 
-  const data = [
-    {
-      id: "1",
-      type: "001",
-      fee_code: "A123",
-      fee_name: false,
-      fee_type: "Fixed",
-      fee_number: "500",
-      ledger: { name: "USD" },
-    },
-    {
-      id: "2",
-      type: "002",
-      fee_code: "B456",
-      fee_name: "Subscription Fee",
-      fee_type: "Monthly",
-      fee_number: "1000",
-      ledger: { name: "MNT" },
-    },
-    {
-      id: "3",
-      type: "003",
-      fee_code: "C789",
-      fee_name: false,
-      fee_type: "Percentage",
-      fee_number: "5",
-      ledger: { name: "USD" },
-    },
-    {
-      id: "4",
-      type: "004",
-      fee_code: "D012",
-      fee_name: "Processing Fee",
-      fee_type: "Fixed",
-      fee_number: "300",
-      ledger: { name: "MNT" },
-    },
-    {
-      id: "5",
-      type: "005",
-      fee_code: "E345",
-      fee_name: false,
-      fee_type: "Percentage",
-      fee_number: "10",
-      ledger: { name: "USD" },
-    },
-  ];
-  
 
   const searchRun = useDebounceFn(list.run, { wait: 1000 });
 
@@ -91,28 +46,34 @@ const AddFeeSet = () => {
     <PageCard xR>
       <div className="px-2 pb-0">
         <InitTableHeader
-        hideDownload = {true}
+          hideDownload={true}
           addButtonName="Нэмэх"
-          customHeaderTitle={ <ProFormDateWeekRangePicker />}
+          customHeaderTitle={
+        <div className="flex items-center text-center">
+          <h2 className="my-4">Нийт (<span>{refinfo_additionalfeeset_data.length}</span>)</h2>
+          <ProFormDateWeekRangePicker />
+        </div>
+          }
           searchPlaceHolder="Нэр, данс"
           fileName="Харилцагч компанийн жагсаалт"
           setCreate={setCreate}
           search={search}
           setSearch={(e) => {
-            setSearch(e);
-            searchRun.run({ ...filter, search: e });
+        setSearch(e);
+        searchRun.run({ ...filter, search: e });
           }}
           refresh={() => list.run({ ...filter, search: search })}
         />
       </div>
 
       <ITable<CustomerCompanyType>
-        
         total={list.data?.total}
         loading={list.loading}
-        dataSource={data}
+        dataSource={refinfo_additionalfeeset_data}
         refresh={(values) => list.run({ ...filter, ...values })}
-        // UpdateComponent={UpdateService}
+        UpdateComponent={UpdateService}
+        DetailComponent={ViewService}
+        RemoveComponent={DeleteButton}
         form={filter}
         setForm={setFilter}
         columns={[

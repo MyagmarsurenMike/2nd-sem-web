@@ -11,6 +11,7 @@ import { initPagination } from "utils/index";
 import { CreateService } from "./actions/create";
 import { UpdateService } from "./actions/update";
 import { ProFormDateWeekRangePicker } from "@ant-design/pro-form/es/components";
+import { refinfo_customercompany_data } from "globaldatas";
 
 const CustomerCompany = () => {
   const [filter, setFilter] = useState(initPagination);
@@ -38,6 +39,7 @@ const CustomerCompany = () => {
 
   const searchRun = useDebounceFn(list.run, { wait: 1000 });
 
+  
   return (
     <PageCard xR>
       <div className="px-2 pb-0">
@@ -60,7 +62,7 @@ const CustomerCompany = () => {
       <ITable<CustomerCompanyType>
         total={list.data?.total}
         loading={list.loading}
-        dataSource={list?.data?.items ?? []}
+        dataSource={refinfo_customercompany_data}
         refresh={(values) => list.run({ ...filter, ...values })}
         UpdateComponent={UpdateService}
         form={filter}
