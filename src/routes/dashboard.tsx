@@ -1,7 +1,9 @@
 import { AuthContext } from "context/auth";
 import { Fininciar } from "pages/dashboard/financiar";
+import { Report } from "pages/dashboard/report";
 import { useContext } from "react";
 import { IRoute } from "./types";
+import { Refinfo } from "pages/dashboard/refinfo";
 
 const DashboardRoutes = () => {
   const [user] = useContext(AuthContext);
@@ -61,6 +63,17 @@ const DashboardRoutes = () => {
     path: "financiar",
     component: <Fininciar />,
   });
+  dashboardRoutes.push({
+    key: "financiar",
+    path: "refinfo",
+    component: <Refinfo />,
+  });
+  dashboardRoutes.push({
+    key: "financiar",
+    path: "report",
+    component: <Report />,
+  });
+  
   return dashboardRoutes;
 };
 

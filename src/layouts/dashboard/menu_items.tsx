@@ -105,4 +105,12 @@ export const StudentMenuItems = [
     name: "Лавлах мэдээлэл",
     path: "/dashboard/financiar",
   },
+  {
+    name: "Лавлах мэдээлэл",
+    path: "/dashboard/refinfo",
+  },
+  {
+    name: "Тайлан",
+    path: "/dashboard/report",
+  },
 ];

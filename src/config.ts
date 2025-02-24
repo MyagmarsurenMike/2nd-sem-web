@@ -266,6 +266,9 @@ export enum FininciarTab {
   CancellingTicket = 3,
   CategoryType = 4,
   ForeignCustomer = 5,
+  IncomingCargo = 6,
+  ArrivedCargo = 7,
+  LeftOver = 8,
 }
 
 export enum registerCustomerEnumTab {

@@ -4,18 +4,23 @@ import { FininciarTab, FininciarTabtButton } from "config";
 import { useState } from "react";
 import CustomerCompany from "./pages/CustomerCompany";
 import ForeignCustomer from "./pages/ForeignCustomer";
+import LeftOv from "./pages/LeftOv";
 
 export const Fininciar: React.FC<any> = ({ data }) => {
-  const [tab, setTab] = useState<any>(FininciarTab.CustomerCompany);
+  const [tab, setTab] = useState<any>(FininciarTab.LeftOver);
 
   const DocumentButtons: FininciarTabtButton[] = [
     {
-      value: FininciarTab.CustomerCompany,
-      label: "Харилцагч компани",
+      value: FininciarTab.IncomingCargo,
+      label: "Ачаа дөхөлт",
     },
     {
-      value: FininciarTab.ForeignCustomer,
-      label: "Гадаад тээвэр зууч",
+      value: FininciarTab.LeftOver,
+      label: "Үлдэгдэл",
+    },
+    {
+      value: FininciarTab.ArrivedCargo,
+      label: "Талбайд ирснээр",
     },
   ];
 
@@ -41,6 +46,10 @@ export const Fininciar: React.FC<any> = ({ data }) => {
           initialValue={FininciarTab.CustomerCompany}
         />
       </div>
+      <IfCondition
+        condition={tab === FininciarTab.LeftOver}
+        whenTrue={<LeftOv />}
+      />
       <IfCondition
         condition={tab === FininciarTab.CustomerCompany}
         whenTrue={<CustomerCompany />}
