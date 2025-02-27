@@ -3,7 +3,6 @@ import { IfCondition } from "components/condition";
 import { FininciarTab, FininciarTabtButton } from "config";
 import { useState } from "react";
 import CustomerCompany from "./pages/CustomerCompany";
-import ForeignCustomer from "./pages/ForeignCustomer";
 import AddFeeSet from "./pages/additionalfee";
 import CustBalSet from "./pages/CustomerBalance";
 import CanTickSet from "./pages/CancelTicket";

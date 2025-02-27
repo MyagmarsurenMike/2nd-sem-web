@@ -11,6 +11,7 @@ import { initPagination } from "utils/index";
 import { CreateService } from "./actions/create";
 import { UpdateService } from "./actions/update";
 import { ProFormDateWeekRangePicker } from "@ant-design/pro-form/es/components";
+import { reportData } from "globaldatas";
 
 const CancelTick = () => {
   const [filter, setFilter] = useState(initPagination);
@@ -59,7 +60,7 @@ const CancelTick = () => {
       <ITable<CustomerCompanyType>
         total={list.data?.total}
         loading={list.loading}
-        dataSource={list?.data?.items ?? []}
+        dataSource={reportData}
         refresh={(values) => list.run({ ...filter, ...values })}
         UpdateComponent={UpdateService}
         form={filter}

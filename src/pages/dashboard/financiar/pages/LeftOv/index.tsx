@@ -14,6 +14,7 @@ import { EyeOutlined } from "@ant-design/icons";
 import { ProFormDateWeekRangePicker } from "@ant-design/pro-form";
 import { leftov_data } from "globaldatas";
 import { ViewService } from "./actions/view";
+import { DeleteService } from "./actions/delete";
 
 const LeftOv = () => {
   const [filter, setFilter] = useState(initPagination);
@@ -45,7 +46,6 @@ const LeftOv = () => {
     <PageCard xR>
       <div className="px-2 pb-0 items-center">
         <InitTableHeader
-          hideFilter={false}
           hideCreate={true}
           hideDownload={true}
           addButtonName="Нэмэх"
@@ -67,8 +67,9 @@ const LeftOv = () => {
         loading={list.loading}
         dataSource={leftov_data}
         refresh={(values) => list.run({ ...filter, ...values })}
-        UpdateComponent={UpdateService}
+        // UpdateComponent={UpdateService}
         DetailComponent={ViewService}
+        // RemoveComponent={DeleteService}
         form={filter}
         setForm={setFilter}
         columns={[

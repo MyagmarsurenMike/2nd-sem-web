@@ -2,7 +2,6 @@ import { useDebounceFn, useRequest } from "ahooks";
 import { notification, Switch } from "antd";
 import { PageCard } from "components/card";
 import { DeleteButton, ITable } from "components/index";
-import { Label } from "components/label";
 import InitTableHeader from "components/table-header";
 import { useEffect, useState } from "react";
 import customerCompany from "service/fininaciar/customerCompany";
@@ -13,7 +12,8 @@ import { UpdateService } from "./actions/update";
 import { ProFormDateWeekRangePicker } from "@ant-design/pro-form/es/components";
 import { refinfo_additionalfeeset_data } from "globaldatas";
 import { ViewService } from "./actions/view";
-import { RemoveButton} from "components/button/actions/remove";
+import DateWeekRangePicker from "@ant-design/pro-form/es/components/DateWeekRangePicker";
+import { DeleteService } from "./actions/delete";
 
 const AddFeeSet = () => {
   const [filter, setFilter] = useState(initPagination);
@@ -49,8 +49,8 @@ const AddFeeSet = () => {
           hideDownload={true}
           addButtonName="Нэмэх"
           customHeaderTitle={
-        <div className="flex items-center text-center">
-          <h2 className="my-4">Нийт (<span>{refinfo_additionalfeeset_data.length}</span>)</h2>
+        <div className="flex items-center text-center gap-4">
+          <h3 className="my-4">Нийт (<span>{refinfo_additionalfeeset_data.length}</span>)</h3>
           <ProFormDateWeekRangePicker />
         </div>
           }
@@ -73,7 +73,7 @@ const AddFeeSet = () => {
         refresh={(values) => list.run({ ...filter, ...values })}
         UpdateComponent={UpdateService}
         DetailComponent={ViewService}
-        RemoveComponent={DeleteButton}
+        RemoveComponent={DeleteService}
         form={filter}
         setForm={setFilter}
         columns={[
