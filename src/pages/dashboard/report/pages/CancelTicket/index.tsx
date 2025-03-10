@@ -1,5 +1,5 @@
 import { useDebounceFn, useRequest } from "ahooks";
-import { notification } from "antd";
+import { notification, Select } from "antd";
 import { PageCard } from "components/card";
 import { ITable } from "components/index";
 import { Label } from "components/label";
@@ -58,6 +58,7 @@ const CancelTick = () => {
       </div>
 
       <ITable<CustomerCompanyType>
+        hideDownload={true}
         total={list.data?.total}
         loading={list.loading}
         dataSource={reportData}
